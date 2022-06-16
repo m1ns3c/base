@@ -18,6 +18,7 @@ cot = checkout test
 [core]
 	fileMode = false
 	excludesfile = ~/.gitignore_global
+	editor = emacs
 [push]
 default = matching
 [color]
