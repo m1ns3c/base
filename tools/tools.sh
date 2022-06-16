@@ -7,6 +7,8 @@ function get_git_root ()
 {
     if $(git rev-parse --git-dir > /dev/null 2>&1); then
 	echo $(git rev-parse --show-toplevel)
+    else
+	echo "."
     fi
 }
 
