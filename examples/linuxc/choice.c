@@ -17,8 +17,11 @@ int getchoice(char *greet,  char *choices[])
     }
 
     selected = getchar(); // read char
+    printf("--%c\n", selected);
+
     option = choices;
     while (*option) {
+      printf("-%c\n", *option[0]);
       if (selected == *option[0]) {
 	chosen = 1;
 	break;
