@@ -2,7 +2,7 @@
 
 function _prompt_privilege() {
   if [ "$(id -un)" = "root" ]; then
-    echo '%{%B%F{red}%}»%{%B%F{yellow}%}»%{%B%F{green}%}»%{%f%k%b%}'
+    echo '%{%B%F{red}%}»»»%{%f%k%b%}'
   else
     echo '%{%B%F{red}%}»%{%B%F{yellow}%}»%{%B%F{green}%}»%{%f%k%b%}'
   fi
