@@ -8,9 +8,9 @@ alias sf='git push --force'
 alias su='git push -u origin'
 
 # editor alias
-alias vim='emacs -Q'
-alias vi='emacs -Q'
-alias e='emacs -Q'
+alias vim='emacs --no-splash'
+alias vi='emacs --no-splash'
+alias e='emacs --no-splash'
 
 # path alias
 alias jr='cd "$(${M1NS3C_ROOT}/tools/tools.sh -r)"'
