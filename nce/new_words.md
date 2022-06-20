@@ -101,3 +101,27 @@ a consideration or estimate of the similarities or dissimilarities between two t
 roughly calculate or judge the value, number, quantity, or extent of
 
 
+## 0617
+
+- fascinate
+
+draw irresistibly the attention and interest of (someone)
+
+- irresistibly
+
+in a way that is too attractive and tempting to be resisted
+
+- resist
+
+withstand the action or effect of
+
+- withstand
+
+remain undamaged or unaffected by; resist
+
+- debateable
+
+- chill
+
+an unpleasant feeling of coldness in the atmosphere, ont's surroundings, or the body
+
