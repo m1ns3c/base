@@ -1,6 +1,12 @@
 # export M1NS3C_ROOT="/data/base"
 # [ -s ${M1NS3C_ROOT}/tools/zsh/base.sh ] && source ${M1NS3C_ROOT}/tools/zsh/base.sh
 
+# export go
+export GOROOT="/usr/local/go"
+export GOPATH="/data/go"
+
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
 # git alias
 alias p='git pull'
 alias s='git push'
