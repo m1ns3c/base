@@ -57,7 +57,13 @@ This is a recurrence relation for the above program.
 T(n) =  f1(n) + 2T(n/2) + f2(n)
 ```
 
+### Approach
+
+In this problem we are using a divide and conquer (DAC) which has three steps divide, conquer and combine. 
+
 ### For Maximum:
+
+we are using the recursive approach to find the maximum where we will see that only two elements are left and then we can easily use condition i.e if(a[index]>a[index+1].)
 
 ```
 if (index >= l-2)
@@ -72,3 +78,87 @@ if (index >= l-2)
     }
 }
 ```
+
+in the above condition, we have checked the left side condition to find out the maximum. Now, we will see the right side condition to find the maximum.
+
+Recursive function to check the right side at the current index of an array.
+
+```
+max = DAC_Max(a, index+1, l);
+// Recursive call
+```
+
+In the given program, we are going to implement this logic to check the condition on the right side at the current index.
+
+```
+// Right element will be maximum.
+if (a[index]>max)
+{
+    return a[index];
+    // max will be maximum element in a given array.
+} else {
+    return max;
+}
+```
+
+#### For minimum:
+
+```
+int DAC_Min(int a[], int index, int l)
+// Recursive call function to find the minimum no. in a given array.
+if (index>=l-2)
+// to check the condition that there will be two-element in the left
+// then we can easily find the minimum element in a given array.
+{
+    // have we will check the condition
+    if (a[index]<a[index+1])
+        return a[index];
+    else
+        return a[index+1];
+}
+```
+
+Now, we call for the condition on the right side in a given array.
+
+```
+// Recursive call for the right side in the given array.
+min = DAC_Min(a, index+1, l);
+```
+
+Now, we will check the condition to find the minimum on the right side.
+
+```
+// Right element will be minimum
+if (a[index]<min)
+    return a[index];
+// Here min will be minimum in a given array.
+else
+    return min;
+```
+
+### Divide and Conquer (D & C) vs Dynamic Programming (DP)
+
+Both paradigms (D&C and DP) divide the given problem into sub-problems and solve the sub-problems.
+
+How do choose one of them for a given problem?
+
+`Divide and Conquer` should be used when the same sub-problems are not evaluated many times.
+
+Otherwise `Dynamic Programming` or `Memoization` should be used.
+
+For example, Quicksort is a Divide and Conquer algorithm, we never evaluate the same sub-problems again.
+
+On the other hand, for calculating the nth `Fibonacci` number, Dynamic Programming should be prefered.
+
+### Advantages of Divide and Conquer Algorithm:
+
+- The difficult problem can be solved easily.
+- It divides the entire problem into sub-problems thus it can be solved parallelly ensuring multiprocessing
+- Efficiently uses cache memory without occupying much space
+- Reduces time complexity of the problem
+
+### Disadvantages of Divide and Conquer Algorithm:
+
+- It involves recursion which is sometimes slow
+- Efficiency depends on the implementation of logic
+- It may crash the system if the recursion is performed rigorously.
