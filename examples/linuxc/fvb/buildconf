@@ -1,0 +1,109 @@
+#!/bin/sh
+#
+# A wrapper around Autoconf that generates files to build FVB on *nix systems.
+
+FVB_AUTOCONF=${FVB_AUTOCONF:-autoconf}
+FVB_AUTOHEADER=${FVB_AUTOHEADER:-autoheader}
+force=0
+debug=0
+
+# Go to project root.
+cd $(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
+
+
+fvb_extra_version=$(grep '^AC_INIT(' configure.ac)
+case "$fvb_extra_version" in
+  *-dev*)
+    dev=1
+    ;;
+  *)
+    dev=0
+    ;;
+esac
+
+while test $# -gt 0; do
+  if test "$1" = "-h" || test "$1" == "--help"; then
+    cat << HELP
+FVB buildconf
+
+SYNOPSIS:
+  buildconf [<options>]
+
+OPTIONS:
+  -f, --force	Regenerate configure files in FVB release packages.
+  --debug	Display warnings emitted by Autoconf.
+  -h, --help	Display this help.
+
+ENVIRONMENT:
+  The following optional variables are supported:
+
+  FVB_AUTOCONF	 Override the path of autoconf tool.
+  		 FVB_AUTOCONF=/path/to/autoconf ./buildconf
+  FVB_AUTOHEADER Overrides the path to autoheader tool.
+  		 FVB_AUTOHEADER=/path/to/autoheader ./buildconf
+HELP
+    exit 0
+  fi
+
+  if test "$1" = "-f" || test "$1" = "--force"; then
+    force=1
+  fi
+
+  if test "$1" = "--debug"; then
+    debug=1
+  fi
+
+  shift
+done
+
+if test "$dev" = "0" && test "$force" = "0"; then
+  if test -f "configure" && test -f "src/config.h.in"; then
+    echo "buildconf: The configure script is already built. All done."
+    echo "           Run ./configure to procced with customizing the FVB build."
+    exit 0
+  else
+    echo "buildconf: Configure files are missing." >&2
+    echo "           Run ./configure --force to create a configure script." >&2
+    exit 1
+  fi
+fi
+
+echo "buildconf: Checking installation"
+
+# Get minimum required autoconf version from the configure.ac file.
+min_version=$(sed -n 's/AC_PREREQ(\[\(.*\)\])/\1/p' configure.ac)
+
+# Check if autoconf exists.
+ac_version=$($FVB_AUTOCONF --version 2>/dev/null|head -n 1|sed -e 's/^[^0-9]*//' -e 's/[a-z]* *$//')
+
+if test -z "$ac_version"; then
+  echo "buildconf: autoconf not found." >&2
+  echo "           You need autoconf version $min_version or newer installed" >&2
+  echo "           to build FVB form Git." >&2
+  exit 1
+fi
+
+echo "buildconf: Cleaning cache and configure files"
+rm -rf \
+   aclocal.m4 \
+   autom4te.cache \
+   config.cache \
+   configure \
+   src/fvb_config.h.in
+
+if test "$debug" = "1"; then
+    autoconf_flags="-f -Wall"
+    autoheader_flags="-Wall"
+else
+    autoconf_flags="-f"
+    autoheader_flags=""
+fi
+
+echo "buildconf: Rebuilding configure"
+$FVB_AUTOCONF $autoconf_flags
+
+echo "buildconf: Rebuild src/fvb_config.h.in"
+$FVB_AUTOHEADER $autoheader_flags
+
+echo "buildconf: Run ./configure to proceed with customizing the FVB build."
+
