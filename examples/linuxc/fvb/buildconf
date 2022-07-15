@@ -57,7 +57,7 @@ HELP
 done
 
 if test "$dev" = "0" && test "$force" = "0"; then
-  if test -f "configure" && test -f "src/config.h.in"; then
+  if test -f "configure" && test -f "src/fvb_config.h.in"; then
     echo "buildconf: The configure script is already built. All done."
     echo "           Run ./configure to procced with customizing the FVB build."
     exit 0

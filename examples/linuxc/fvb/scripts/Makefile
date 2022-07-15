@@ -12,7 +12,7 @@
 # even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
 
-
+@SET_MAKE@
 
 
 am__is_gnu_make = { \
@@ -70,10 +70,10 @@ am__make_running_with_option = \
   test $$has_opt = yes
 am__make_dryrun = (target_option=n; $(am__make_running_with_option))
 am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
-pkgdatadir = $(datadir)/fvb
-pkgincludedir = $(includedir)/fvb
-pkglibdir = $(libdir)/fvb
-pkglibexecdir = $(libexecdir)/fvb
+pkgdatadir = $(datadir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkglibexecdir = $(libexecdir)/@PACKAGE@
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -125,16 +125,16 @@ am__uninstall_files_from_dir = { \
   }
 am__installdirs = "$(DESTDIR)$(bindir)"
 SCRIPTS = $(bin_SCRIPTS)
-AM_V_P = $(am__v_P_$(V))
-am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
+AM_V_P = $(am__v_P_@AM_V@)
+am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
 am__v_P_1 = :
-AM_V_GEN = $(am__v_GEN_$(V))
-am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))
+AM_V_GEN = $(am__v_GEN_@AM_V@)
+am__v_GEN_ = $(am__v_GEN_@AM_DEFAULT_V@)
 am__v_GEN_0 = @echo "  GEN     " $@;
 am__v_GEN_1 = 
-AM_V_at = $(am__v_at_$(V))
-am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))
+AM_V_at = $(am__v_at_@AM_V@)
+am__v_at_ = $(am__v_at_@AM_DEFAULT_V@)
 am__v_at_0 = @
 am__v_at_1 = 
 SOURCES =
@@ -147,61 +147,61 @@ am__can_run_installinfo = \
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 am__DIST_COMMON = $(srcdir)/Makefile.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} '/data/base/examples/linuxc/fvb/missing' aclocal-1.16
-AMTAR = $${TAR-tar}
-AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} '/data/base/examples/linuxc/fvb/missing' autoconf
-AUTOHEADER = ${SHELL} '/data/base/examples/linuxc/fvb/missing' autoheader
-AUTOMAKE = ${SHELL} '/data/base/examples/linuxc/fvb/missing' automake-1.16
-AWK = gawk
+ACLOCAL = @ACLOCAL@
+AMTAR = @AMTAR@
+AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
+AUTOCONF = @AUTOCONF@
+AUTOHEADER = @AUTOHEADER@
+AUTOMAKE = @AUTOMAKE@
+AWK = @AWK@
 CC = gcc
-CCDEPMODE = depmode=gcc3
+CCDEPMODE = @CCDEPMODE@
 CFLAGS = -g -O2
 CPPFLAGS = 
-CSCOPE = cscope
-CTAGS = ctags
-CYGPATH_W = echo
+CSCOPE = @CSCOPE@
+CTAGS = @CTAGS@
+CYGPATH_W = @CYGPATH_W@
 DEFS = -DHAVE_CONFIG_H
-DEPDIR = .deps
+DEPDIR = @DEPDIR@
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
-ETAGS = etags
+ETAGS = @ETAGS@
 EXEEXT = 
-INSTALL = /usr/bin/install -c
-INSTALL_DATA = ${INSTALL} -m 644
-INSTALL_PROGRAM = ${INSTALL}
-INSTALL_SCRIPT = ${INSTALL}
-INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LDFLAGS = 
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} '/data/base/examples/linuxc/fvb/missing' makeinfo
-MKDIR_P = /usr/bin/mkdir -p
+MAKEINFO = @MAKEINFO@
+MKDIR_P = @MKDIR_P@
 OBJEXT = o
-PACKAGE = fvb
+PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = root@minsec.cn
 PACKAGE_NAME = fvb
 PACKAGE_STRING = fvb v0.0.1
 PACKAGE_TARNAME = fvb
-PACKAGE_URL = 
+PACKAGE_URL = https://fvb.minsec.cn
 PACKAGE_VERSION = v0.0.1
 PATH_SEPARATOR = :
-SET_MAKE = 
+SET_MAKE = @SET_MAKE@
 SHELL = /bin/sh
-STRIP = 
-VERSION = v0.0.1
+STRIP = @STRIP@
+VERSION = @VERSION@
 abs_builddir = /data/base/examples/linuxc/fvb/scripts
 abs_srcdir = /data/base/examples/linuxc/fvb/scripts
 abs_top_builddir = /data/base/examples/linuxc/fvb
 abs_top_srcdir = /data/base/examples/linuxc/fvb
 ac_ct_CC = gcc
-am__include = include
-am__leading_dot = .
-am__quote = 
-am__tar = $${TAR-tar} chof - "$$tardir"
-am__untar = $${TAR-tar} xf -
+am__include = @am__include@
+am__leading_dot = @am__leading_dot@
+am__quote = @am__quote@
+am__tar = @am__tar@
+am__untar = @am__untar@
 bindir = ${exec_prefix}/bin
 build_alias = 
 builddir = .
@@ -214,13 +214,13 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /data/base/examples/linuxc/fvb/install-sh
+install_sh = @install_sh@
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
 mandir = ${datarootdir}/man
-mkdir_p = $(MKDIR_P)
+mkdir_p = @mkdir_p@
 oldincludedir = /usr/include
 pdfdir = ${docdir}
 prefix = /usr/local
@@ -248,9 +248,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign scripts/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu scripts/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign scripts/Makefile
+	  $(AUTOMAKE) --gnu scripts/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
