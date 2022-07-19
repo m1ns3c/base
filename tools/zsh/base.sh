@@ -21,3 +21,6 @@ alias e='emacs --no-splash'
 # path alias
 alias jr='cd "$(${M1NS3C_ROOT}/tools/tools.sh -r)"'
 alias jb='cd "${M1NS3C_ROOT}"'
+
+# bazel
+alias bazel='bazelisk'
